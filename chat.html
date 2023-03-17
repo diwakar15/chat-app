@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" placeholder="username" name="username" required>
+   <script>
+    function createuser(username)
+    {
+    let username = document.getElementById('username').value
+    console.log('username',username)
+    let authKey = "AUTH_KEY";
+    var UID = "username";
+    var name = "username";
+
+    var user = new CometChat.User(UID);
+
+    user.setName(name);
+
+    CometChat.createUser(user, authKey).then(
+     user => {
+         console.log(UID,authKey);
+         user =>{
+            console.log("Login success",{user});
+         },
+         error =>{
+            console.log("error occured",{error});
+         }
+     }, error => {
+        console.log("error", error);
+     }
+     )
+    }
+   </script>
+</body>
+<script type="text/javascript" src="https://unpkg.com/@cometchat-pro/chat@3.0.11/CometChat.js"></script>
+<script type="text/javascript" src="./index.js"></script>
+</html>
